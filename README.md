@@ -81,6 +81,14 @@ This will use `sudo systemctl` to disable the service.  No status is returned an
 
 This will run `systemctl list-unit-files --type service --no-pager`
 
+Combine this with grep to get a list of services in various states:
+
+`slist | grep -i enabled`
+
+`slist | grep -i disabled`
+
+`slist | grep -i masked`
+
 ### Have systemctl do a daemon reload
 
 `sdaemonreload`
