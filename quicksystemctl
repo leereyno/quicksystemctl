@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# How many lines in sstatus output
+Q_LINES=30
+
+set -euo pipefail
+
+if [ $# -lt 1 ] ; then
+	echo -e "\nI need the name of a service\n"
+	echo -e "(e.g. $(basename $0) nginx)\n"
+	exit 1
+fi
+
+Q_SERVICE=$1
+
+sstatus()
+{
+	systemctl --lines $Q_LINES --no-pager status $Q_SERVICE
+}
+
+# What are we doing?
+case $(basename $0) in
+
+	sstart)
+		sudo systemctl start $Q_SERVICE
+		sstatus
+		;;
+
+	sstop)
+		sudo systemctl stop $Q_SERVICE
+		sstatus
+		;;
+
+	sstatus)
+		sstatus
+		;;
+
+	senable)
+		sudo systemctl enable $Q_SERVICE
+		;;
+
+	sdisable)
+		sudo systemctl disable $Q_SERVICE
+		;;
+
+	*)
+		echo -e "\nUnknown option $(basename $0)\n"
+		;;
+
+esac
+
+
