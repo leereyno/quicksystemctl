@@ -6,20 +6,21 @@ if [ $# -lt 1 ] ; then
 	exit 1
 fi
 
-TARGET=1
+TARGET=$1
 
 if [ ! -d $TARGET ] ; then
 	echo -e "\nDirectory $TARGET missing...\n"
 	exit 1
 fi
 
-sudo cp -a \
-	quicksystemctl \
-	sstart \
-	sstop \
-	sstatus \
-	senable \
+sudo /bin/cp -av quicksystemctl \
+	sdaemonreload \
 	sdisable \
+	senable \
+	sreload \
+	srestart \
+	sstart \
+	sstatus \
+	sstop \
 	$TARGET
-
 
