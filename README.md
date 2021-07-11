@@ -1,4 +1,4 @@
-# quicksystemctl
+# Overview
 
 Do you find yourself fiddling with systemctl a lot and getting the order of 
 operations backwards since it is the opposite of that used for decades by the 
@@ -11,5 +11,49 @@ find out...
 This utility attempts to simplify the usage of systemctl for end users by 
 creating distinct commands for the most common operations that one usually
 performs.
+
+## Installation
+
+Use the install.sh script to install to a specific target directory, *which
+must exist* and should ideally be in your PATH.  Good places to install to
+are `/usr/local/bin` and `$HOME/bin`
+
+`./install.sh /my/special/directory`
+
+## Usage
+
+### Start a service
+
+`sstart servicename`
+
+This will use `sudo systemctl` to start the service and then return the status of the service
+
+### Stop a service
+
+`sstop servicename`
+
+This will use `sudo systemctl` to stop the service and then return the status of the service
+
+### Get the status of a service
+
+`sstatus servicename`
+
+The `Q_LINES` variable can be adjusted to control the number of journal lines to show.  This variable
+is currently set to 30.
+
+### Enable a service
+
+`senable servicename`
+
+This sill use `sudo systemctl` to enable the service. No status is returned and the service is
+*not started.*
+
+### Disable a service
+
+`sdisable servicename`
+
+This will use `sudo systemctl` to disable the service.  No status is returned and the service is
+*not stopped.*
+
 
 
