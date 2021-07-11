@@ -8,12 +8,22 @@ fi
 
 set -u # Do not let us use undeclared variables
 
-# Commands that do not not require any arguments
-if [ "$(basename $0)" == "sdaemonreload" ] ; then
-	echo -e "\nsystemctl daemon-reload\n"
-	sudo systemctl daemon-reload
-	exit 0
-fi
+# Handle commands that do not require any arguments
+case $(basename $0) in
+
+	sdaemonreload)
+		echo -e "\nsystemctl daemon-reload\n"
+		sudo systemctl daemon-reload
+		exit 0
+		;;
+
+	slist)
+		echo -e "\nsystemctl list-unit-files --type service --no-pager\n"
+		systemctl list-unit-files --type service --no-pager
+		exit 0
+		;;
+
+esac
 
 # Commands that require arguments
 if	[ $# -lt 1 ] ; then
