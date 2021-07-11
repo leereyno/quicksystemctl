@@ -38,8 +38,11 @@ This will use `sudo systemctl` to stop the service and then return the status of
 
 `sstatus servicename`
 
-The `Q_LINES` variable can be adjusted to control the number of journal lines to show.  This variable
-is currently set to 30.
+The `--no-pager` option is used here. If you want the output to pause, pipe it to `less`
+
+The `Q_LINES` environment variable can be set (e.g. in ~/.bashrc ) to control the number of journal lines to show.
+
+The default otherwise is 30 lines.
 
 ### Enable a service
 
