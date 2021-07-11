@@ -13,6 +13,8 @@ if [ ! -d $TARGET ] ; then
 	exit 1
 fi
 
+cd $(dirname $0)
+
 sudo /bin/cp -av quicksystemctl \
 	sdaemonreload \
 	sdisable \
