@@ -75,6 +75,12 @@ This will use `sudo systemctl` to enable the service. No status is returned and 
 This will use `sudo systemctl` to disable the service.  No status is returned and the service is
 *not stopped.*
 
+### List all available services
+
+`slist`
+
+This will run `systemctl list-unit-files --type service --no-pager`
+
 ### Have systemctl do a daemon reload
 
 `sdaemonreload`
