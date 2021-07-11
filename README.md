@@ -79,7 +79,7 @@ This will use `sudo systemctl` to disable the service.  No status is returned an
 
 `sdaemonreload`
 
-Useful for when you've made changes to the systemd configuration files
+Useful for when you've made changes to the systemd daemon configuration files or installed a new daemon
 
 Runs `systemctl daemon-reload`
 
