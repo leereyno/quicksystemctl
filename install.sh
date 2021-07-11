@@ -1,10 +1,12 @@
 #!/bin/bash
 
-if [ $# -ge 1 ] ; then
-	TARGET=$1
-else
-	TARGET=/usr/local/bin
+if [ $# -lt 1 ] ; then
+	echo -e "\nNeed target directory\n"
+	echo -e "(e.g. $(basename $0) /usr/local/bin)\n"
+	exit 1
 fi
+
+TARGET=1
 
 if [ ! -d $TARGET ] ; then
 	echo -e "\nDirectory $TARGET missing...\n"
