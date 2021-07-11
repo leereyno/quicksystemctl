@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# How many lines in sstatus output
-Q_LINES=30
+# How many lines in sstatus output?
+# Honor user environment setting if one exists
+if [ -z ${Q_LINES+x} ] ; then
+	Q_LINES=30
+fi
 
 set -euo pipefail
 
@@ -41,6 +44,10 @@ case $(basename $0) in
 
 	sdisable)
 		sudo systemctl disable $Q_SERVICE
+		;;
+
+	quicksystemctl)
+		echo -e "\nThe $(basename $0) script is not intended to be used directly\n"
 		;;
 
 	*)
