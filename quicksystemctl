@@ -6,7 +6,7 @@ if [ -z ${Q_LINES+x} ] ; then
 	Q_LINES=30
 fi
 
-set -euo pipefail
+set -u # Do not let us use undeclared variables
 
 if [ $# -lt 1 ] ; then
 	echo -e "\nI need the name of a service\n"
