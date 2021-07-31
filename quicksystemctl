@@ -11,6 +11,11 @@ set -u # Do not let us use undeclared variables
 # Handle commands that do not require any arguments
 case $(basename $0) in
 
+	quicksystemctl)
+		echo -e "\nThe $(basename $0) script is not intended to be used directly\n"
+		exit 1
+		;;
+
 	sdaemonreload)
 		echo -e "\nsystemctl daemon-reload\n"
 		sudo systemctl daemon-reload
@@ -89,12 +94,9 @@ case $(basename $0) in
 		sudo systemctl disable $Q_SERVICE
 		;;
 
-	quicksystemctl)
-		echo -e "\nThe $(basename $0) script is not intended to be used directly\n"
-		;;
-
 	*)
 		echo -e "\nUnknown option $(basename $0)\n"
+		exit 1
 		;;
 
 esac
