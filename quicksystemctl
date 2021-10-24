@@ -3,7 +3,7 @@
 # How many lines in sstatus output?
 # Honor user environment setting if one exists
 if [ -z ${Q_LINES+x} ] ; then
-	Q_LINES=30
+   Q_LINES=30
 fi
 
 set -u # Do not let us use undeclared variables
@@ -11,98 +11,98 @@ set -u # Do not let us use undeclared variables
 # Handle commands that do not require any arguments
 case $(basename $0) in
 
-	quicksystemctl)
-		echo -e "\nThe $(basename $0) script is not intended to be used directly\n"
-		exit 1
-		;;
+   quicksystemctl)
+      echo -e "\nThe $(basename $0) script is not intended to be used directly\n"
+      exit 1
+      ;;
 
-	sdaemonreload)
-		echo -e "\nsystemctl daemon-reload\n"
-		sudo systemctl daemon-reload
-		exit 0
-		;;
+   sdaemonreload)
+      echo -e "\nsystemctl daemon-reload\n"
+      sudo systemctl daemon-reload
+      exit 0
+      ;;
 
-	slist)
+   slist)
       if [ $# -ge 1 ] ; then
-		   echo -e "\nsystemctl list-unit-files --type service --no-pager | grep $@\n"
-		   systemctl list-unit-files --type service --no-pager | grep $@
+         echo -e "\nsystemctl list-unit-files --type service --no-pager | grep $@\n"
+         systemctl list-unit-files --type service --no-pager | grep $@
       else
-   		echo -e "\nsystemctl list-unit-files --type service --no-pager\n"
-   		systemctl list-unit-files --type service --no-pager
+         echo -e "\nsystemctl list-unit-files --type service --no-pager\n"
+         systemctl list-unit-files --type service --no-pager
       fi
-		exit 0
-		;;
+      exit 0
+      ;;
 
 esac
 
 # Commands that require arguments
-if	[ $# -lt 1 ] ; then
-	echo -e "\nI need the name of a service\n"
-	echo -e "(e.g. $(basename $0) nginx)\n"
-	exit 1
+if   [ $# -lt 1 ] ; then
+   echo -e "\nI need the name of a service\n"
+   echo -e "(e.g. $(basename $0) nginx)\n"
+   exit 1
 fi
 
 Q_SERVICE=$1
 
 sstop()
 {
-	sudo systemctl stop $Q_SERVICE
+   sudo systemctl stop $Q_SERVICE
 }
 
 sstart()
 {
-	sudo systemctl start $Q_SERVICE
+   sudo systemctl start $Q_SERVICE
 }
 
 sstatus()
 {
-	systemctl --lines $Q_LINES --no-pager status $Q_SERVICE
+   systemctl --lines $Q_LINES --no-pager status $Q_SERVICE
 }
 
 # What are we doing?
 case $(basename $0) in
 
-	sstart)
-		sstart
-		sstatus
-		;;
+   sstart)
+      sstart
+      sstatus
+      ;;
 
-	sstop)
-		sstop
-		sstatus
-		;;
+   sstop)
+      sstop
+      sstatus
+      ;;
 
-	srestart)
-		echo -e "\nStopping $Q_SERVICE\n"
-		sstop
-		sstatus
+   srestart)
+      echo -e "\nStopping $Q_SERVICE\n"
+      sstop
+      sstatus
 
-		echo -e "\nStarting $Q_SERVICE\n"
-		sstart
-		sstatus
-		;;
+      echo -e "\nStarting $Q_SERVICE\n"
+      sstart
+      sstatus
+      ;;
 
-	sreload)
-		sudo systemctl reload $Q_SERVICE
-		sstatus
-		;;
+   sreload)
+      sudo systemctl reload $Q_SERVICE
+      sstatus
+      ;;
 
-	sstatus)
-		sstatus
-		;;
+   sstatus)
+      sstatus
+      ;;
 
-	senable)
-		sudo systemctl enable $Q_SERVICE
-		;;
+   senable)
+      sudo systemctl enable $Q_SERVICE
+      ;;
 
-	sdisable)
-		sudo systemctl disable $Q_SERVICE
-		;;
+   sdisable)
+      sudo systemctl disable $Q_SERVICE
+      ;;
 
-	*)
-		echo -e "\nUnknown option $(basename $0)\n"
-		exit 1
-		;;
+   *)
+      echo -e "\nUnknown option $(basename $0)\n"
+      exit 1
+      ;;
 
 esac
 
