@@ -23,8 +23,13 @@ case $(basename $0) in
 		;;
 
 	slist)
-		echo -e "\nsystemctl list-unit-files --type service --no-pager\n"
-		systemctl list-unit-files --type service --no-pager
+      if [ $# -ge 1 ] ; then
+		   echo -e "\nsystemctl list-unit-files --type service --no-pager | grep $@\n"
+		   systemctl list-unit-files --type service --no-pager | grep $@
+      else
+   		echo -e "\nsystemctl list-unit-files --type service --no-pager\n"
+   		systemctl list-unit-files --type service --no-pager
+      fi
 		exit 0
 		;;
 
