@@ -29,6 +29,11 @@ case $(basename $0) in
       exit 0
       ;;
 
+	sfailed)
+		systemctl --type=service --state=failed --no-pager --no-legend
+		exit 0
+		;;
+
    slist)
       if [ $# -ge 1 ] ; then
          echo -e "\nsystemctl list-unit-files --type service --no-pager | grep $@\n"
@@ -42,7 +47,7 @@ case $(basename $0) in
 
 	srunning)
 		systemctl --type=service --state=running --no-pager --no-legend
-		exit 0;
+		exit 0
 		;;
 
 esac

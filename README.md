@@ -75,6 +75,12 @@ This will use `sudo systemctl` to enable the service. No status is returned and 
 This will use `sudo systemctl` to disable the service.  No status is returned and the service is
 *not stopped.*
 
+### List all failed services
+
+`sfailed`
+
+This will run `systemctl --type=service --state=failed --no-pager --no-legend`
+
 ### List all available services
 
 `slist`
