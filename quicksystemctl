@@ -40,6 +40,11 @@ case $(basename $0) in
       exit 0
       ;;
 
+	srunning)
+		systemctl --type=service --state=running --no-pager --no-legend
+		exit 0;
+		;;
+
 esac
 
 # Commands that require arguments

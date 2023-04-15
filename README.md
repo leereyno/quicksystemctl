@@ -89,6 +89,20 @@ Combine this with grep to get a list of services in various states:
 
 `slist | grep -i masked`
 
+### List all running services
+
+`srunning`
+
+This will run `systemctl --type=service --state=all --no-pager --no-legend`
+
+Combine this with grep to drill down to a particular service name or partial service name
+
+`srunning | grep -i sql`
+
+`srunning | grep -i http`
+
+`srunning | grep -i docker`
+
 ### Have systemctl do a daemon reload
 
 `sdaemonreload`
