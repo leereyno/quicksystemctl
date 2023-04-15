@@ -22,6 +22,7 @@ sudo /bin/cp -av quicksystemctl \
 	slist \
 	sreload \
 	srestart \
+	srunning \
 	sstart \
 	sstatus \
 	sstop \
