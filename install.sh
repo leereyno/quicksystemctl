@@ -19,6 +19,7 @@ sudo /bin/cp -av quicksystemctl \
 	sdaemonreload \
 	sdisable \
 	senable \
+	sfailed \
 	slist \
 	sreload \
 	srestart \
