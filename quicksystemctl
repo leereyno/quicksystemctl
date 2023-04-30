@@ -79,6 +79,10 @@ sstatus()
 # What are we doing?
 case $(basename $0) in
 
+	sactive)
+		systemctl is-active $Q_SERVICE
+		;;
+
    sstart)
       sstart
       sstatus

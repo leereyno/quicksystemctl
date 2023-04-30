@@ -16,6 +16,7 @@ fi
 cd $(dirname $0)
 
 sudo /bin/cp -av quicksystemctl \
+	sactive \
 	sdaemonreload \
 	sdisable \
 	senable \
