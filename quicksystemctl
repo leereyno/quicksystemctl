@@ -36,8 +36,8 @@ case $(basename $0) in
 
    slist)
       if [ $# -ge 1 ] ; then
-         echo -e "\nsystemctl list-unit-files --type service --no-pager | grep $@\n"
-         systemctl list-unit-files --type service --no-pager | grep $@
+         echo -e "\nsystemctl list-unit-files --type service --no-pager | grep -i $@\n"
+         systemctl list-unit-files --type service --no-pager | grep -i $@
       else
          echo -e "\nsystemctl list-unit-files --type service --no-pager\n"
          systemctl list-unit-files --type service --no-pager
